@@ -7,7 +7,7 @@ void mx_hexadecimal(void);
 void mx_hexadecimal(void)
 {
     char c;
-    for(int a = 0; a <= 16; a++)
+    for(int a = 0; a <= 15; a++)
     {
         if(a < 10)
         {
