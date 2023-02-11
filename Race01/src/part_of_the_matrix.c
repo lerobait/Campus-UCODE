@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
         mx_printerr("\n");
         exit(-1);
     }
-    else if(mx_strlen(operation) != 1 || *operation != '+' && *operation != '-' && *operation != '*' && *operation != '/' && *operation != '%') {
+    else if(mx_strlen(operation) != 1 || *operation != '+' && *operation != '-' && *operation != '*' && *operation != '/' && *operation != '?') {
         mx_printerr("Invalid operation: ");
         mx_printerr(argv[2]);
         mx_printerr("\n");
@@ -76,5 +76,49 @@ int main(int argc, char *argv[]) {
         mx_printerr("\n");
         exit(-1);
     }
+    int a = mx_atoi(operand1);
+    int b = mx_atoi(operand2);
+    int c = mx_atoi(result);
+
+    if(*operation == '+') {
+        if(a + b == c) {
+            mx_printint(a);
+            mx_printstr(" + ");
+            mx_printint(b);
+            mx_printstr(" = ");
+            mx_printint(c);
+            mx_printchar('\n');
+        }
+    }
+    else if(*operation == '-') {
+        if(a - b == c) {
+            mx_printint(a);
+            mx_printstr(" - ");
+            mx_printint(b);
+            mx_printstr(" = ");
+            mx_printint(c);
+            mx_printchar('\n');
+        }
+    }
+    else if(*operation == '*') {
+        if(a * b == c) {
+            mx_printint(a);
+            mx_printstr(" * ");
+            mx_printint(b);
+            mx_printstr(" = ");
+            mx_printint(c);
+            mx_printchar('\n');
+        }
+    }
+    else if(*operation == '/') {
+        if(a / b == c) {
+            mx_printint(a);
+            mx_printstr(" / ");
+            mx_printint(b);
+            mx_printstr(" = ");
+            mx_printint(c);
+            mx_printchar('\n');
+        }
+    }               
 }
 
