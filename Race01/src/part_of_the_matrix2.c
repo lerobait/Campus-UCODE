@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     char *result = mx_strtrim(argv[4]);
     
     
-    if(mx_strlen(operation) != 1 || (*operation != '+' && *operation != '-' && *operation != '*' && *operation != '/' && *operation != '%')) {
+    if(mx_strlen(operation) != 1 || (*operation != '+' && *operation != '-' && *operation != '*' && *operation != '/' && *operation != '?')) {
         mx_printerr("Invalid operation: ");
         mx_printerr(argv[2]);
         mx_printerr("\n");
@@ -81,7 +81,23 @@ int main(int argc, char *argv[]) {
             mx_equasion_1_var(operand1, operand2, result, argv, operation, num1, num2, result_int, 2);
         }
     }
+    else if(variable_count == 2) {
 
-    
+        if(flag_1 == true && flag_2 == true) {
+            for(num1 = mx_pow(10, mx_strlen(operand1) - 1); num1 < mx_pow(10, mx_strlen(operand1)); num1++) {
+                  mx_equasion_2_var(operand1, operand2, result, argv, operation, num1, num2, result_int, 1);
+            }
+        }
+        else if (flag_1 == true && flag_result == true)  {
+            for(num1 = mx_pow(10, mx_strlen(operand1) - 1); num1 < mx_pow(10, mx_strlen(operand1)); num1++) {
+                mx_equasion_2_var(operand1, operand2, result, argv, operation, num1, num2, result_int, 2);
+            }
+        }
+        else if (flag_2 == true && flag_result == true)  {
+            for(num2 = mx_pow(10, mx_strlen(operand1) - 1); num2 < mx_pow(10, mx_strlen(operand1)); num2++) {
+                mx_equasion_2_var(operand1, operand2, result, argv, operation, num1, num2, result_int, 2);
+            }
+        }
+    }
 }
 

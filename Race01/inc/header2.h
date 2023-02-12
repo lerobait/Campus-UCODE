@@ -24,6 +24,7 @@ void mx_swap_char(char *s1, char *s2);
 void mx_valid_operand(char* operand, char* argv, int type);
 void mx_print_result(int num1, int num2, int result, char* operation);
 void mx_equasion_1_var(char* operand1, char* operand2, char *result_str, char** argv, char* operation, int num1, int num2, int result, int c);
+void mx_equasion_2_var(char* operand1, char* operand2, char *result_str, char** argv, char* operation, int num1, int num2, int result, int c);
 
 #endif
 
