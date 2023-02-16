@@ -1,32 +1,28 @@
 #include "header.h"
 
 int mx_atoi(const char *str) {
-    int m = 0;
+    int f = 1;
+    int c = 0;
     int r = 0;
+    int j = 0;
 
-    for(int j = 0; str[j]; j++) {
-        for(int g = 48; g <= 57; g++) {
-            if((int)str[j] == 45) {
-                m = 1;
-                continue;
-            }
-            else if(mx_isspace(str[j])) {
-                continue;
-            }
-            else if(!mx_isdigit(str[j])) {
-                return -351351351;
-            }
-            else if((int)str[j] == g) {
-                r += (g - 48);
-                if(str[j + 1]) {
-                    r = r * 10;
-                }
-            }
+    while(str[j] != '\0') {
+        if(mx_isdigit(str[j])) {
+            r *= 10;
+            r += str[j] - 48;
         }
+        else if(f != -1 && str[j] == '-') {
+            ++c;
+            f = -1;
+        }
+        else if(c < 1 && str[j] == '+') {
+            ++c;
+        }
+        else if(c > 1 || (!mx_isspace(str[j]) && !mx_isdigit(str[j]))) {
+            return r * f;
+        }
+        j++;
     }
-    if(m == 1) {
-        r *= -1;
-    }
-    return r;
+    return r * f;
 }
 
