@@ -1,11 +1,11 @@
 #include "header.h"
 
 int mx_strlen(const char *s) {
-    int a = 0;
-    while(*s != 0) {
-        s++;
-        a++;
+    const char* str = s;
+
+    while(*str) {
+        ++str;
     }
-    return a;
+    return str - s;
 }
 
