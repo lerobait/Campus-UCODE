@@ -1,11 +1,19 @@
-#ifndef HEADER_H
-#define HEADER_H
+#ifndef HEADER
+#define HEADER
 
-#include <unistd.h>
-#include <stdlib.h>
+#include <stdbool.h>
+#include <ncurses.h>
 #include <string.h>
+#include <unistd.h>
+#include <time.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <unistd.h>
 
-int mx_strlen(const char *s);
+void mx_preview();
+unsigned int mx_strlen(const char*);
+void mx_initcolor();
+void mx_matrix_rain();
+void mx_printerr();
 
 #endif
-
