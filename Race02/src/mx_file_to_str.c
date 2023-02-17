@@ -1,4 +1,4 @@
-#include "header.h"
+#include "../inc/header.h"
 
 char *mx_file_to_str(const char *filename) {
     char s[1];

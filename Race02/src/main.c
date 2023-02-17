@@ -1,11 +1,11 @@
-#include "header.h"
+#include "../inc/header.h"
 
 int main(int argc, char const *argv[]) {
     if(argc != 6) {
         mx_printerr("usage: ./way_home [file_name] [x1] [y1] [x2] [y2]");
     }
     char s[1];
-    int f = open(argv[1], O_READONLY);
+    int f = open(argv[1], O_RDONLY);
     int u = read(f, s, sizeof(s));
 
     if(f < 0) {
@@ -19,21 +19,21 @@ int main(int argc, char const *argv[]) {
     int x1 = mx_atoi(argv[2]), x2 = mx_atoi(argv[4]);
     int y1 = mx_atoi(argv[3]), y2 = mx_atoi(argv[5]);
 
-    int r;
-    int s;
+    int rd;
+    int st;
 
-    char *str = mx_file_to_str(argv[1]);  
+    char *str = mx_file_to_str(argv[1]);
+    int **m = matrix(str, &rd, &st);  
 
-    if(x1 >= s || x1 < 0 || x2 >= s || x2 < 0 || y1 >= r || y1 < 0 || y2 >= r || y2 < 0) {
+    if(x1 >= st || x2 >= st || x1 < 0 || x2 < 0 || y1 < 0 || y2< 0 || y1 >= rd || y2 >= rd) {
         mx_printerr("points are out of map range\n");
         exit(0);
     }
     int l;
-    int **m = matrix(str, &r, &s);
-    int px[r * s];
-    int py[r * s];
+    int px[rd * st];
+    int py[rd * st];
 
-    if(!path(m, x1, y1, x2, y2, r, s, &l, px, py)) {
+    if(!path(m, x1, y1, x2, y2, rd, st, &l, px, py)) {
         mx_printerr("route not found\n");
         exit(0);
     }
@@ -42,7 +42,7 @@ int main(int argc, char const *argv[]) {
     if(f1 < 0) {
         f1 = open("path.txt", O_CREAT | O_WRONLY);
     }
-    char **final = cmatrix(str, &r, &s);
+    char **final = cmatrix(str, &rd, &st);
     int k = 0;
 
     while(k < l) {
@@ -50,11 +50,11 @@ int main(int argc, char const *argv[]) {
         k++;
     }
     final[y2][x2] = '*';
-    int **m1 = matrix(str, &r, &s);
-    max(m1, x1, y1, r, s, final);
+    int **m1 = matrix(str, &rd, &st);
+    max(m1, x1, y1, rd, st, final);
 
-    for(int i = 0; i < r; ++i) {
-        for(int j = 0; j < s; ++j) {
+    for(int i = 0; i < rd; ++i) {
+        for(int j = 0; j < st; ++j) {
             char s = final[i][j];
             write(f1, &s, 1);
         }
@@ -65,7 +65,7 @@ int main(int argc, char const *argv[]) {
             exit(0);
     }
     mx_printstr("dist=");
-    mx_printint(max(m1, x1, y1, r, s, final));
+    mx_printint(max(m1, x1, y1, rd, st, final));
     mx_printstr("\n");
     mx_printstr("exit=");
     mx_printint(l);

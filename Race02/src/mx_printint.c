@@ -1,30 +1,37 @@
-#include "header.h"
+#include "../inc/header.h"
 
 void mx_printint(int n) {
-    if(n != 0) {
-        
-        int j = 0;
-        long g = n;
-        char x[20];
-        
-        if(g < 0) {
-            g = -g;
-        }
-        while(g != 0) {
-            x[j++] = g % 10 + '0';
-            g /= 10;
-        }
-        if(n < 0) {
-            x[j++] = '-';
-        }
+    int num = n;
+    int c = 0;
+    int d = 1;
+    int j = 1;
 
-        int f = j - 1;
-        
-        while(f >= 0) {
-            mx_printchar(x[f]);
-            f--;
-        }
-    }   
-    else mx_printchar('0');
+    if(n < 0) {
+        mx_printchar('-');
+        n = n * (-1);
+        num = n;
+    }
+    if(n == 0) {
+        mx_printchar('0');
+    }
+    while(n != 0) {
+        n /= 10;
+        ++c;
+    }
+    while(j < c) {
+        d = d * 10;
+        ++j;
+    }
+    while(num > 0) {
+        int dig = num / d + 48;
+        mx_printchar(dig);
+        --c;
+        num %= d;
+        d = d / 10;
+    }
+    while(c) {
+        mx_printchar('0');
+        --c;
+    }
 }
 

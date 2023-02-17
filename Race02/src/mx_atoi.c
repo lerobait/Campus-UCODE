@@ -1,4 +1,4 @@
-#include "header.h"
+#include "../inc/header.h"
 
 int mx_atoi(const char *str) {
     int f = 1;

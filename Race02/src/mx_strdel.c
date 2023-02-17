@@ -1,9 +1,12 @@
-#include "header.h"
+#include "../inc/header.h"
 
 void mx_strdel(char **str) {
-    if(*str) {
-        free(*str);
-        *str = NULL;
+    int j = 0;
+
+    while(str[j]) {
+        free(str[j]);
+        str[j] = NULL;
+        j++;
     }
 }
 

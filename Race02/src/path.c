@@ -1,4 +1,4 @@
-#include "header.h"
+#include "../inc/header.h"
 
 bool path(int **grid,int ax, int ay, int bx, int by,int He, int Wi, int *len,int *px,int *py) {
     int dx[4] = {1, 0, -1, 0};

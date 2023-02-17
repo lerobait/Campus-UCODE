@@ -1,10 +1,10 @@
 NAME = way_home
-CFLAGS = -std=c11 -Wall -Wextra -Werror -Wpedantic
+CFLAGS = -Wall -Wextra -Werror -Wpedantic
 
 all: MINILIBMX
 
 MINILIBMX:
-	clang $(CFLAGS) src/*.c -o $(NAME)
+	clang-14 $(CFLAGS) src/*.c -o $(NAME)
 
 clean:
 	rm -f $(NAME)

@@ -21,6 +21,10 @@ int mx_strlen(const char *s);
 char *mx_strncpy(char *dst, const char *src, int len);
 char *mx_strnew(const int size);
 char *mx_strtrim(const char *str);
+char **cmatrix(char *res, int *ryad, int *stovb);
+int **matrix(char *res, int *ryad, int *stovb);
+int max(int **grid,int ax, int ay,int He, int Wi, char **final);
+bool path(int **grid,int ax, int ay, int bx, int by,int He, int Wi, int *len,int *px,int *py);
 
 #endif
 
