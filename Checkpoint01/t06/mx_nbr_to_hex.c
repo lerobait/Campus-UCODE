@@ -3,7 +3,7 @@
 char *mx_nbr_to_hex(unsigned long nbr);
 
 char *mx_nbr_to_hex(unsigned long nbr) {
-    if(4294967295 > nbr) {
+    if(nbr > 0) {
     int s = 0;
     int t = nbr;
     
